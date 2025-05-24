@@ -5,7 +5,9 @@
       <input type="email" v-model="email" placeholder="Email" required />
       <input type="password" v-model="password" placeholder="Password" required />
       <button type="submit">Login</button>
-      <p>Don't have an account? <router-link to="/signup">Signup</router-link></p>
+      <p>Don't have an account?
+        <router-link to="/signup">Signup</router-link>
+      </p>
     </form>
   </div>
 </template>
@@ -20,7 +22,7 @@ export default {
   },
   methods: {
     login() {
-      alert(Logged in with ${this.email});
+      alert(`Logged in with ${this.email}`);
       this.$router.push('/purchase');
     }
   }
