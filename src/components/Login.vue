@@ -20,7 +20,8 @@ export default {
   },
   methods: {
     login() {
-      alert(`Logged in with ${this.email}`);
+      alert(Logged in with ${this.email});
+      this.$router.push('/purchase');
     }
   }
 };
