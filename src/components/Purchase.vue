@@ -84,6 +84,15 @@ export default {
           image: "/mens clothing/download.jpeg",
         },
         {
+          id: 14,
+          title: "mens' green checks shirt",
+          price: 450,
+          description: "Bright green checks shirt for men.",
+          category: "men",
+          image: "/mens clothing/images (2).jpeg",
+        },
+        
+        {
           id: 5,
           title: "Women's chudidhar",
           price: 2500,
@@ -155,6 +164,7 @@ export default {
           category: "kids",
           image: "/kids clothing/images (2).jpeg",
         },
+        
         
         
       ],
