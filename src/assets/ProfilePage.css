@@ -1,0 +1,213 @@
+/* Shopping Cart Style Profile CSS */
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.profile-header {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header h2 {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.profile-header p {
+  margin: 0;
+  font-size: 16px;
+  color: #6c757d;
+}
+
+.orders-section {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.orders-section h3 {
+  margin: 0 0 40px 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Empty state styling */
+.orders-section > div:last-child {
+  padding: 60px 20px;
+}
+
+.orders-section > div:last-child p {
+  font-size: 20px;
+  color: #6c757d;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+/* Order items styling */
+.order {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: left;
+  border: 1px solid #e9ecef;
+}
+
+.order p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #495057;
+}
+
+.order p strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.order ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.order ul li {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #6c757d;
+}
+
+.order hr {
+  border: none;
+  border-top: 1px solid #dee2e6;
+  margin: 20px 0 0 0;
+}
+
+/* Start Shopping Button Style */
+.start-shopping-btn {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.start-shopping-btn:hover {
+  background: #357abd;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.start-shopping-btn:active {
+  transform: translateY(0);
+}
+
+/* Empty cart illustration area */
+.empty-cart-area {
+  padding: 80px 20px 40px;
+  background: white;
+}
+
+.empty-cart-area::before {
+  content: '🛒';
+  font-size: 64px;
+  display: block;
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+
+/* Order summary styling */
+.order-summary {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 6px;
+  margin-top: 15px;
+  border-left: 4px solid #4a90e2;
+}
+
+.order-total {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 20px 15px;
+  }
+  
+  .profile-header,
+  .orders-section {
+    padding: 25px 20px;
+  }
+  
+  .profile-header h2 {
+    font-size: 28px;
+  }
+  
+  .orders-section h3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .order {
+    padding: 20px 15px;
+  }
+  
+  .start-shopping-btn {
+    padding: 12px 30px;
+    font-size: 15px;
+  }
+  
+  .empty-cart-area {
+    padding: 60px 15px 30px;
+  }
+  
+  .empty-cart-area::before {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-header h2 {
+    font-size: 24px;
+  }
+  
+  .orders-section h3 {
+    font-size: 22px;
+  }
+  
+  .orders-section > div:last-child p {
+    font-size: 18px;
+  }
+  
+  .order p {
+    font-size: 15px;
+  }
+  
+  .order ul li {
+    font-size: 14px;
+  }
+}

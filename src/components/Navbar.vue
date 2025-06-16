@@ -21,6 +21,12 @@
         </router-link>
       </li>
       <li>
+        <router-link to="/profile" @click="closeMenu">
+          <span class="nav-icon">🛍️</span>
+          Profile
+        </router-link>
+      </li>
+      <li>
         <router-link to="/purchase" @click="closeMenu">
           <span class="nav-icon">🛍️</span>
           Purchase
