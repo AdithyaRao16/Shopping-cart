@@ -65,77 +65,77 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import VerticalNavbar from './Navbar.vue';
 
-export default {
-  name: "MyCart",
-  components: { VerticalNavbar },
-  data() {
-    return {
-      cartItems: [],
-    };
-  },
-  computed: {
-    totalItems() {
-      return this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
-    },
-    subtotal() {
-      return this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    },
-    grandTotal() {
-      return this.subtotal;
-    }
-  },
-  methods: {
-    loadCart() {
-      const cart = localStorage.getItem('cart');
-      this.cartItems = cart ? JSON.parse(cart) : [];
-    },
-    saveCart() {
-      localStorage.setItem('cart', JSON.stringify(this.cartItems));
-    },
-    increaseQuantity(id) {
-      const item = this.cartItems.find(i => i.id === id);
-      if (item) {
-        item.quantity++;
-        this.saveCart();
-      }
-    },
-    decreaseQuantity(id) {
-      const item = this.cartItems.find(i => i.id === id);
-      if (item && item.quantity > 1) {
-        item.quantity--;
-        this.saveCart();
-      }
-    },
-    removeFromCart(id) {
-      this.cartItems = this.cartItems.filter(item => item.id !== id);
-      this.saveCart();
-    },
-    continueShopping() {
-      this.$router.push('/purchase');
-    },
-    proceedToCheckout() {
-      const order = {
-        id: Date.now(),
-        date: new Date().toISOString().split("T")[0],
-        items: this.cartItems,
-        total: this.grandTotal
-      };
-      const history = JSON.parse(localStorage.getItem("orderHistory") || "[]");
-      history.push(order);
-      localStorage.setItem("orderHistory", JSON.stringify(history));
-      this.cartItems = [];
-      this.saveCart();
-      alert("Order placed!");
-      this.$router.push('/profile');
-    }
-  },
-  mounted() {
-    this.loadCart();
+const router = useRouter();
+const cartItems = ref([]);
+
+const loadCart = () => {
+  const cart = localStorage.getItem('cart');
+  cartItems.value = cart ? JSON.parse(cart) : [];
+};
+
+const saveCart = () => {
+  localStorage.setItem('cart', JSON.stringify(cartItems.value));
+};
+
+const increaseQuantity = (id) => {
+  const item = cartItems.value.find(i => i.id === id);
+  if (item) {
+    item.quantity++;
+    saveCart();
   }
 };
+
+const decreaseQuantity = (id) => {
+  const item = cartItems.value.find(i => i.id === id);
+  if (item && item.quantity > 1) {
+    item.quantity--;
+    saveCart();
+  }
+};
+
+const removeFromCart = (id) => {
+  cartItems.value = cartItems.value.filter(item => item.id !== id);
+  saveCart();
+};
+
+const continueShopping = () => {
+  router.push('/purchase');
+};
+
+const proceedToCheckout = () => {
+  const order = {
+    id: Date.now(),
+    date: new Date().toISOString().split("T")[0],
+    items: cartItems.value,
+    total: grandTotal.value
+  };
+  const history = JSON.parse(localStorage.getItem("orderHistory") || "[]");
+  history.push(order);
+  localStorage.setItem("orderHistory", JSON.stringify(history));
+  cartItems.value = [];
+  saveCart();
+  alert("Order placed!");
+  router.push('/profile');
+};
+
+const totalItems = computed(() =>
+  cartItems.value.reduce((sum, item) => sum + item.quantity, 0)
+);
+
+const subtotal = computed(() =>
+  cartItems.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
+);
+
+const grandTotal = computed(() => subtotal.value);
+
+onMounted(() => {
+  loadCart();
+});
 </script>
 
 <style src="@/assets/cart.css"></style>

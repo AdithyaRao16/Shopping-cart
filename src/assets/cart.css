@@ -85,7 +85,7 @@
 }
 
 .item-title {
-  color: #2c3e50;
+  color: white;
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0;
@@ -155,10 +155,10 @@
 .quantity-btn {
   background: #f8f9fa;
   border: none;
-  color: #495057;
+  color: black;
   font-size: 18px;
   font-weight: bold;
-  width: 35px;
+  width: 10px;
   height: 35px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -168,7 +168,7 @@
 }
 
 .quantity-btn:hover:not(:disabled) {
-  background: #3498db;
+  background-color: black  ;
   color: white;
 }
 

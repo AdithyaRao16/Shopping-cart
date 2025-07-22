@@ -1,100 +1,125 @@
-/* Shopping Cart Style Profile CSS */
+/* ================================
+   Profile Page Styling
+   ================================ */
+
 .profile-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #f0f2f5;
   min-height: 100vh;
 }
 
+/* Profile Header with Editable Form */
 .profile-header {
-  background: white;
+  background-color: #ffffff;
   padding: 30px;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.profile-header h2 {
-  margin: 0 0 8px 0;
-  font-size: 32px;
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+}
+
+.profile-form label {
   font-weight: 600;
-  color: #2c3e50;
+  color: #333;
 }
 
-.profile-header p {
-  margin: 0;
+.profile-form input,
+.profile-form textarea {
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
   font-size: 16px;
-  color: #6c757d;
+  resize: vertical;
 }
 
+.profile-form button {
+  margin-top: 15px;
+  padding: 12px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.profile-form button:hover {
+  background-color: #357abd;
+}
+
+/* Orders Section */
 .orders-section {
-  background: white;
+  background-color: #ffffff;
   padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .orders-section h3 {
-  margin: 0 0 40px 0;
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 700;
   color: #2c3e50;
-}
-
-/* Empty state styling */
-.orders-section > div:last-child {
-  padding: 60px 20px;
-}
-
-.orders-section > div:last-child p {
-  font-size: 20px;
-  color: #6c757d;
   margin-bottom: 30px;
-  font-weight: 500;
+  text-align: left;
 }
 
-/* Order items styling */
+/* Order Card */
 .order {
-  background: #f8f9fa;
+  background-color: #f9f9f9;
   padding: 25px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border: 1px solid #e1e1e1;
   text-align: left;
-  border: 1px solid #e9ecef;
 }
 
 .order p {
   margin: 8px 0;
   font-size: 16px;
-  color: #495057;
+  color: #444;
 }
 
 .order p strong {
   color: #2c3e50;
-  font-weight: 600;
 }
 
 .order ul {
-  margin: 15px 0;
+  margin-top: 15px;
   padding-left: 20px;
 }
 
 .order ul li {
-  margin: 8px 0;
+  margin-bottom: 8px;
   font-size: 15px;
-  color: #6c757d;
+  color: #555;
 }
 
 .order hr {
+  margin-top: 20px;
   border: none;
-  border-top: 1px solid #dee2e6;
-  margin: 20px 0 0 0;
+  border-top: 1px solid #ddd;
 }
 
-/* Start Shopping Button Style */
+/* Empty Order Message */
+.orders-section > div:last-child {
+  padding: 60px 20px;
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Start Shopping Button */
 .start-shopping-btn {
   background: #4a90e2;
   color: white;
@@ -105,9 +130,9 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-top: 20px;
   text-decoration: none;
   display: inline-block;
-  margin-top: 20px;
 }
 
 .start-shopping-btn:hover {
@@ -116,97 +141,37 @@
   box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
 
-.start-shopping-btn:active {
-  transform: translateY(0);
-}
-
-/* Empty cart illustration area */
-.empty-cart-area {
-  padding: 80px 20px 40px;
-  background: white;
-}
-
-.empty-cart-area::before {
-  content: '🛒';
-  font-size: 64px;
-  display: block;
-  margin-bottom: 20px;
-  opacity: 0.3;
-}
-
-/* Order summary styling */
-.order-summary {
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 6px;
-  margin-top: 15px;
-  border-left: 4px solid #4a90e2;
-}
-
-.order-total {
-  font-size: 18px;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #dee2e6;
-}
-
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
   .profile-container {
-    padding: 20px 15px;
+    padding: 20px;
   }
-  
-  .profile-header,
-  .orders-section {
-    padding: 25px 20px;
+
+  .orders-section,
+  .profile-header {
+    padding: 30px 20px;
   }
-  
-  .profile-header h2 {
-    font-size: 28px;
-  }
-  
+
   .orders-section h3 {
     font-size: 24px;
-    margin-bottom: 30px;
   }
-  
+
   .order {
-    padding: 20px 15px;
-  }
-  
-  .start-shopping-btn {
-    padding: 12px 30px;
-    font-size: 15px;
-  }
-  
-  .empty-cart-area {
-    padding: 60px 15px 30px;
-  }
-  
-  .empty-cart-area::before {
-    font-size: 48px;
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .profile-header h2 {
-    font-size: 24px;
+  .profile-form input,
+  .profile-form textarea {
+    width: 100%;
   }
-  
+
   .orders-section h3 {
     font-size: 22px;
   }
-  
-  .orders-section > div:last-child p {
-    font-size: 18px;
-  }
-  
-  .order p {
-    font-size: 15px;
-  }
-  
+
+  .order p,
   .order ul li {
     font-size: 14px;
   }
