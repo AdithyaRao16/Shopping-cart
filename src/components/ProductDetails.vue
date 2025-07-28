@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <VerticalNavbar :cartCount="cartCount.value" />
+    <VerticalNavbar :cartCount="cartCount" />
     <div class="page-content">
-      <div v-if="product.value" class="product-details-container">
+      <div v-if="product" class="product-details-container">
         <nav class="breadcrumb">
           <router-link to="/purchase">← Back to Products</router-link>
         </nav>
@@ -10,21 +10,21 @@
         <div class="product-details">
           <div class="product-image-section">
             <div class="main-image">
-              <img :src="product.value.image" :alt="product.value.title" />
+              <img :src="product.image" :alt="product.title" />
             </div>
           </div>
 
           <div class="product-info-section">
             <div class="product-header">
-              <h1>{{ product.value.title }}</h1>
+              <h1>{{ product.title }}</h1>
               <div class="price-section">
-                <span class="current-price">₹{{ product.value.price.toFixed(2) }}</span>
+                <span class="current-price">₹{{ product.price.toFixed(2) }}</span>
               </div>
             </div>
 
             <div class="product-description">
               <h3>Description</h3>
-              <p>{{ product.value.description }}</p>
+              <p>{{ product.description }}</p>
             </div>
 
             <div class="product-specifications">
@@ -32,15 +32,15 @@
               <div class="spec-grid">
                 <div class="spec-item">
                   <span class="spec-label">Category:</span>
-                  <span class="spec-value">{{ getCategoryDisplayName(product.value.category) }}</span>
+                  <span class="spec-value">{{ getCategoryDisplayName(product.category) }}</span>
                 </div>
                 <div class="spec-item">
                   <span class="spec-label">Size:</span>
-                  <span class="spec-value">{{ product.value.size }}</span>
+                  <span class="spec-value">{{ product.size }}</span>
                 </div>
                 <div class="spec-item">
                   <span class="spec-label">Color:</span>
-                  <span class="spec-value">{{ product.value.color }}</span>
+                  <span class="spec-value">{{ product.color }}</span>
                 </div>
               </div>
             </div>
@@ -48,21 +48,20 @@
             <div class="quantity-section">
               <h3>Quantity</h3>
               <div class="quantity-controls">
-                <button @click="decreaseQuantity" :disabled="quantity.value <= 1">-</button>
-                <span class="quantity-display">{{ quantity.value }}</span>
+                <button @click="decreaseQuantity" :disabled="quantity <= 1">-</button>
+                <span class="quantity-display">{{ quantity }}</span>
                 <button @click="increaseQuantity">+</button>
               </div>
             </div>
 
             <div class="action-buttons">
               <button class="add-to-cart-btn" @click="addToCart">
-                Add to Cart (₹{{ (product.value.price * quantity.value).toFixed(2) }})
+                Add to Cart (₹{{ (product.price * quantity).toFixed(2) }})
               </button>
               <button class="buy-now-btn" @click="buyNow">
                 Buy Now
               </button>
             </div>
-
           </div>
         </div>
       </div>
@@ -107,7 +106,7 @@ const products = [
 
 function loadProduct() {
   const productId = parseInt(route.params.id);
-  product.value = products.find(p => p.id === productId);
+  product.value = products.find(p => p.id === productId) || null;
 }
 
 function loadCartCount() {
@@ -163,3 +162,5 @@ watch(() => route.params.id, () => {
   loadProduct();
 });
 </script>
+<style scoped src="@/assets/ProductDetails.css"></style>
+
